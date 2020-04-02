@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bin2Dec - Binary to Decimal converter</title>
+    <meta
+      name="description"
+      content="Challenge from App Ideas Collection from florinpop17/app-ideas repository"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        outline: none;
+      }
+      body {
+        font-family: "Open Sans", sans-serif;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        height: 100vh;
+        background: #e5e5e5;
+        align-items: center;
+        justify-content: center;
+      }
+      h2 {
+        font-size: 1em;
+        color: #333;
+      }
+      form {
+        background: #fff;
+        padding: 25px 35px;
+        border-radius: 5px;
+        -webkit-box-shadow: 2px 3px 5px 1px rgba(163, 163, 163, 1);
+        -moz-box-shadow: 2px 3px 5px 1px rgba(163, 163, 163, 1);
+        box-shadow: 2px 3px 5px 1px rgba(163, 163, 163, 1);
+        margin-top: 25px;
+      }
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      .input-group:nth-child(2) {
+        margin-top: 25px;
+      }
+      label {
+        font-size: 0.75em;
+        font-weight: bold;
+      }
+      input {
+        width: 350px;
+        height: 25px;
+        padding: 5px;
+        margin-top: 5px;
+        color: #333;
+        border-radius: 5px;
+        border: 2px solid #ccc;
+        font-size: 18px;
+        font-weight: bold;
+        letter-spacing: 8px;
+      }
+      input#dec-input {
+        letter-spacing: 1px;
+        background-color: #b2d9f957;
+        border-color: #b2d9f9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Binary to Decimal Converter</h1>
+      <h2>You can only input binary values</h2>
+      <form action="#" method="get">
+        <div class="input-group">
+          <label for="bin-input">binary value</label>
+          <input type="number" id="bin-input" onkeyup="convert(this)" />
+        </div>
+        <div class="input-group">
+          <label for="dec-input">decimal result</label>
+          <input type="number" name="Decimal result" id="dec-input" disabled />
+        </div>
+      </form>
+    </div>
+    <script>
+      function convert(input) {
+        input.value = sanitizeValue(input.value);
+        document.getElementById("dec-input").value = parseInt(
+          input.value.toString(),
+          2
+        );
+      }
+
+      function sanitizeValue(value) {
+        const regex = /[^0-1]/g;
+        return value.toString().replace(regex, "");
+      }
+    </script>
+  </body>
+</html>
